@@ -8,7 +8,6 @@ public interface GreetingServiceInterface {
     String greetingMessage(String name);
     Optional<Greeting> findGreetingMessage(int id);
     List<Greeting> listAllGreetingMessage();
-    Optional<Greeting> updateGreetingMessage(Greeting greeting, int id);
     void deleteGreetingMessage(int id);
 
 }

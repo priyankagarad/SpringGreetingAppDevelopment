@@ -5,8 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GreetingRepository extends JpaRepository<Greeting,Long>{
-    Optional<Greeting> findGreetingMessage(int id);
-    List<Greeting> listAllGreetingMessage();
-    Optional<Greeting> updateGreetingMessage(Greeting greeting, int id);
-    void deleteGreetingMessage(int id);
+
 }

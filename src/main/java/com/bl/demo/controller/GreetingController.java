@@ -37,5 +37,8 @@ public class GreetingController {
         return new ResponseEntity(greetingAppService.listAllGreetingMessage(), HttpStatus.OK);
     }
 
-
+    @DeleteMapping(value = "/greeting/message/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public void deleteGreetingMessage(@PathVariable("id") int id) {
+        greetingAppService.deleteGreetingMessage(id);
+    }
 }

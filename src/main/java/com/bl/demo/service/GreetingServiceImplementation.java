@@ -3,8 +3,8 @@ import com.bl.demo.model.Greeting;
 import com.bl.demo.repository.GreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GreetingServiceImplementation implements GreetingServiceInterface {
@@ -22,8 +22,17 @@ public class GreetingServiceImplementation implements GreetingServiceInterface {
         return message;
     }
 
+    @Override
+    public Optional<Greeting> findGreetingMessage(int id) {
+        return greetingRepository.findById((long) id);
+    }
+
     public List<Greeting> listAllGreetingMessage() {
         return greetingRepository.findAll();
+    }
+
+    public void deleteGreetingMessage(int id) {
+        greetingRepository.deleteById((long) id);
     }
 }
 
