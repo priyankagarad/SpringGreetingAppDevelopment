@@ -1,11 +1,23 @@
 package com.bl.demo.model;
-public class Greeting {
-    private Long count;
-    private String name;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-    public Greeting(String name,Long count){
-        this.name=name;
-        this.count=count;
+@Entity
+@Table
+public class Greeting {
+    private long id;
+    private String name;
+    private String message;
+
+    public Greeting(long count,String name,String message) {
+        this.name = name;
+        this.id = count;
+        this.message=message;
+    }
+
+    public Greeting() {
+
     }
 
     public String getName() {
@@ -16,11 +28,22 @@ public class Greeting {
         this.name = name;
     }
 
-    public Long getCount() {
-        return count;
+    @Id
+    public long getId() {
+        return id;
     }
 
-    public void setCount(Long count) {
-        this.count = count;
+    public void setId(long id) {
+        this.id = id;
     }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
 }
+

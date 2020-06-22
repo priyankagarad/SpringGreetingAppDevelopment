@@ -1,8 +1,9 @@
 package com.bl.demo.service;
 import com.bl.demo.model.Greeting;
-import com.bl.demo.model.User;
+import java.util.List;
+import java.util.Optional;
 
 public interface GreetingServiceInterface {
-    Greeting addGreeting(User user);
-    Greeting getGreetingById(long id);
+    String greetingMessage();
+
 }

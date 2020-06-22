@@ -1,17 +1,19 @@
 package com.bl.demo.controller;
 import com.bl.demo.model.Greeting;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import java.util.concurrent.atomic.AtomicLong;
+import com.bl.demo.service.GreetingServiceImplementation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class GreetingController {
-    private static final String template = "Hello,%s!";
-    private final AtomicLong counter = new AtomicLong();
+    @Autowired
+    private GreetingServiceImplementation greetingAppService;
 
-    @GetMapping("/greeting")
-    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return new Greeting(String.format(template, name), counter.incrementAndGet());
+    @GetMapping(value = "/greeting", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity sayWelcome() {
+        return new ResponseEntity("Welcome to Greeting App", HttpStatus.OK);
     }
 }
