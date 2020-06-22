@@ -4,6 +4,8 @@ import com.bl.demo.repository.GreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GreetingServiceImplementation implements GreetingServiceInterface {
     @Autowired
@@ -18,6 +20,10 @@ public class GreetingServiceImplementation implements GreetingServiceInterface {
         Greeting greeting = new Greeting((int) (greetingRepository.count() + 1), name, message);
         greetingRepository.save(greeting);
         return message;
+    }
+
+    public List<Greeting> listAllGreetingMessage() {
+        return greetingRepository.findAll();
     }
 }
 

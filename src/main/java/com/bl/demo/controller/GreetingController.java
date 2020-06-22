@@ -21,5 +21,21 @@ public class GreetingController {
     public ResponseEntity greetingMessage() {
         return new ResponseEntity(greetingAppService.greetingMessage(), HttpStatus.OK);
     }
-    
+
+    @GetMapping(value = "/greeting/message/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity greetingMessageWithName(@PathVariable("name") String name) {
+        return new ResponseEntity(greetingAppService.greetingMessage(name), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/greeting/message/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity greetingMessageWithName(@PathVariable("id") int id) {
+        return new ResponseEntity(greetingAppService.findGreetingMessage(id), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/greeting/message/list", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity listAllGreetingMessages() {
+        return new ResponseEntity(greetingAppService.listAllGreetingMessage(), HttpStatus.OK);
+    }
+
+
 }
