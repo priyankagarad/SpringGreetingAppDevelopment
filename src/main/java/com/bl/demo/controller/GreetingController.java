@@ -16,4 +16,10 @@ public class GreetingController {
     public ResponseEntity sayWelcome() {
         return new ResponseEntity("Welcome to Greeting App", HttpStatus.OK);
     }
+
+    @GetMapping(value = "/greeting/message", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity greetingMessage() {
+        return new ResponseEntity(greetingAppService.greetingMessage(), HttpStatus.OK);
+    }
+    
 }
